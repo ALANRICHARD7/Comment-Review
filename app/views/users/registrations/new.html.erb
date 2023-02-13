@@ -1,0 +1,40 @@
+<div class="ui raised very padded text container segment" style="margin-top: 10%">
+    <div class="ui top attached big label">Sign Up</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "ui form") do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+      <div class="ui input">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+  </div>
+<!--        <br/>-->
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+      <div class="ui input">
+    <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+  </div>
+    
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+      <div class="ui input">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+  </div>
+        <br/>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "ui blue button", style: "display: inline" %>
+      <%= render "users/shared/links" %>
+  </div>
+<% end %>
+
+
+</div>

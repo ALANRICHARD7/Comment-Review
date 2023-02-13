@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReviewApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <div class="ui menu">
+      <%= link_to "Reviews", reviews_path, class: "item" %>
+      <%= link_to "Add a review", new_review_path, class: "item" %>
+      <div class="right menu">
+          <% if user_signed_in? %>
+              <%= link_to "Log Out", destroy_user_session_path, class: "item", data: { turbo_method: :delete } %>
+          <% else %>
+              <%= link_to "Log In", new_user_session_path, class: "item" %>
+          <% end %>
+      </div>
+  </div>
+  
+  <% if alert %>
+      <div class="ui red message"><%= alert %></div>
+  <% elsif notice %>
+      <div class="ui green message"><%= notice %></div>
+  <% end %>
+  
+  
+  <%= yield %>
+  
+  </body>
+</html>

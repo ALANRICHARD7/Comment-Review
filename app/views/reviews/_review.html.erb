@@ -1,0 +1,32 @@
+<div id="<%= dom_id review %>" class="ui card" style="padding: 30px 60px; width: 100%; margin-bottom: 40px">
+    <div class="content">
+    <h3 class="ui header">
+        <i class="user small icon"></i>  <%= review.user.email %>
+    </h3>
+    </div>
+    
+    <%= link_to review_path(review), data: {turbo_method: :delete}, style: "position: absolute; right: 5%" do %>
+        <i class="trash icon"></i>
+    <% end %>
+    
+    <div class="content" style="text-align: justify">
+  <p>
+    <%= review.content  %>
+  </p>
+    
+        <br/>
+        
+  <p>
+    <strong>Rating:</strong>
+    <%= review.rating %>
+  </p>
+    </div>
+    
+    <div style="text-align: right">
+        <% if review.id & 1 == 1 %>
+        <a class="ui right floated green tag label" style="width: max-content;">True</a>
+        <% else %>
+            <a class="ui right floated red tag label" style="width: max-content;">Fake</a>
+        <% end %>
+    </div>
+</div>

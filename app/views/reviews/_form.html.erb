@@ -1,0 +1,37 @@
+<div class="ui raised very padded text container segment" style="margin-top: 10%; padding-bottom: 80px" >
+    <h2> Add a Review: </h2>
+<%= form_with(model: review, class: "ui form") do |form| %>
+  <% if review.errors.any? %>
+    <div style="color: red">
+      <p><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</p>
+
+      <ul>
+        <% review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="field">
+      <%= form.label :content, style: "display: block" %>
+      <%= form.text_area :content %>
+    </div>
+  </div>
+<br/>
+  <div>
+    <%= form.label :rating, style: "display: block" %>
+    <%= form.number_field :rating, max: "5", min: "1", style: "width: 80px" %>
+  </div>
+
+<!--  <div>-->
+    <%#= form.label :user_id, style: "display: block" %>
+    <%#= form.hidden_field :user_id, value: session[:user_id] %>
+<!--  </div>-->
+<br/>
+  <div>
+    <%= form.submit class: "ui blue button", style: "position: absolute; right: 0" %>
+  </div>
+<% end %>
+</div>
