@@ -23,7 +23,7 @@
     </div>
     
     <div style="text-align: right">
-        <% if review.id & 1 == 1 %>
+        <% if(review.rating % 2 == 1) %>
         <a class="ui right floated green tag label" style="width: max-content;">True</a>
         <% else %>
             <a class="ui right floated red tag label" style="width: max-content;">Fake</a>
